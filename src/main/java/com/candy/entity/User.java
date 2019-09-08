@@ -2,11 +2,14 @@ package com.candy.entity;
 
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 
 import javax.validation.constraints.*;
 import java.util.StringJoiner;
 
-public class User {
+public class User implements ApplicationContextAware {
 
     @Email(message = "{email.invalid}")
     @NotEmpty(message = "{email.empty}")
@@ -86,5 +89,10 @@ public class User {
                 .add("username='" + username + "'")
                 .add("password='" + password + "'")
                 .toString();
+    }
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+
     }
 }

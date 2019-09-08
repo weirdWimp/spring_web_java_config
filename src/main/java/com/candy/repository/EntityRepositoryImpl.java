@@ -49,12 +49,8 @@ public class EntityRepositoryImpl implements EntityRepository {
     private List<MessageEntity> createMsgEntities () {
         List<MessageEntity> list = new ArrayList<>(20);
         for (int i = 0; i <= 20; i++) {
-            list.add(new MessageEntity("Tom", LocalDateTime.now(), "Message:" + i));
+            list.add(new MessageEntity("Tom", "", "Message:" + i));
         }
         return list;
     }
-
-
-
-
 }

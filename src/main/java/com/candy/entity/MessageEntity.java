@@ -9,11 +9,18 @@ public class MessageEntity {
 
     private String name;
 
-    private LocalDateTime time;
+    private String time;
 
     private String message;
 
-    public MessageEntity(String name, LocalDateTime time, String message) {
+
+    /**
+     * 默认的构造器是必须的，RequestBody 将请求实体转换为 Java 对象时，会调用默认构造器
+     */
+    public MessageEntity() {
+    }
+
+    public MessageEntity(String name, String time, String message) {
         this.name = name;
         this.time = time;
         this.message = message;
@@ -27,11 +34,11 @@ public class MessageEntity {
         this.name = name;
     }
 
-    public LocalDateTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -51,5 +58,15 @@ public class MessageEntity {
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this, "name", "time");
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("MessageEntity{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", time='").append(time).append('\'');
+        sb.append(", message='").append(message).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
